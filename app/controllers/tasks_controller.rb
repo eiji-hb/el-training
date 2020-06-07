@@ -4,7 +4,7 @@ class TasksController < ApplicationController
   end
 
   def index
-    @tasks = Task.all
+    @tasks = Task.all.order(id: :desc)
   end
 
   def show
@@ -14,7 +14,7 @@ class TasksController < ApplicationController
   def create
     @task = Task.new(task_params)
     if @task.save
-      redirect_to task_path(@task), notice: '成功'
+      redirect_to root_path, notice: '成功'
     else
       render :new
     end

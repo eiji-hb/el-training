@@ -1,9 +1,2 @@
-h1 Tasks#edit
-= form_with model: @task, local: true do |f|
-  .field
-    = f.label :name
-    = f.text_field :name
-  .field
-    = f.label :description
-    = f.text_area :description
-  = f.submit "更新"
+h1 タスクの編集
+= render 'tasks/form'
