@@ -2,4 +2,4 @@
 
 * id    :bigint
 * name  :string(255)
-* body  :text(65535)
+* description  :text(65535)
