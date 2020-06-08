@@ -23,6 +23,10 @@ RSpec.describe Task, type: :model do
         @task.deadline = nil
         expect(@task).not_to be_valid
       end
+      it 'priorityが存在しないとき' do
+        @task.priority = nil
+        expect(@task).not_to be_valid
+      end
     end
   end
 end
