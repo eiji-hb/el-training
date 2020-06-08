@@ -40,4 +40,18 @@ describe "index画面からの遷移", type: :system, js: true do
       expect(Task.order("deadline DESC").map(&:id)).to eq [4,3,2,1]
     end
   end
+  context "検索" do
+    it "タイトルと一致するのを検索" do
+      select 'タイトル', from: 'select'
+      fill_in 'q',with: 'MyText'
+      click_button "検索"
+      expect(page).to have_selector 'td', text: 'MyText'
+    end
+    it "ステータスと一致するのを検索" do
+      select 'ステータス', from: 'select'
+      fill_in 'q',with: '未着手'
+      click_button "検索"
+      expect(page).to have_selector 'td', text: '未着手'
+    end
+  end
 end

@@ -6,7 +6,14 @@ class TasksController < ApplicationController
   end
 
   def index
-    @tasks = Task.all.order(sort_column + ' ' + sort_direction)
+    case params[:select]
+    when "タイトル"
+      @tasks = Task.where(name: params[:q]).order(sort_column + ' ' + sort_direction)
+    when "ステータス"
+      @tasks = Task.where(status: params[:q]).order(sort_column + ' ' + sort_direction)
+    else
+      @tasks = Task.all.order(sort_column + ' ' + sort_direction)
+    end
   end
 
   def show

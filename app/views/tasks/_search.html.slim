@@ -1,0 +1,5 @@
+= form_with model: @search,url: tasks_path,local: true,method: :get do |f|
+  .form-group
+    = f.select :select,["タイトル","ステータス"]
+    = f.search_field :q
+  =f.submit "検索"
