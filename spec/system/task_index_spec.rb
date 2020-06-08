@@ -33,5 +33,11 @@ describe "index画面からの遷移", type: :system, js: true do
     it "order(created_at: :desc)の順" do
       expect(Task.order("created_at DESC").map(&:id)).to eq [4,3,2,1]
     end
+    it "昇順になる" do
+      expect(Task.order("deadline ASC").map(&:id)).to eq [1,2,3,4]
+    end
+    it "降順になる" do
+      expect(Task.order("deadline DESC").map(&:id)).to eq [4,3,2,1]
+    end
   end
 end
