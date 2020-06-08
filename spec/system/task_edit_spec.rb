@@ -20,7 +20,7 @@ describe "編集", type: :system, js: true do
     it 'indexにリダイレクトされる' do
       fill_in 'task_name', with: 'testtesttest'
       fill_in 'task_description', with: 'testtesttesttesttesttest'
-      click_button "Update Task"
+      click_button "更新する"
       expect(page).to have_content "更新しました。"
       expect(current_path).to eq root_path
     end
@@ -29,7 +29,7 @@ describe "編集", type: :system, js: true do
     it '失敗' do
       fill_in 'task_name', with: ''
       fill_in 'task_description', with: ''
-      click_button "Update Task"
+      click_button "更新する"
       expect(page).to have_css ".error"
     end
   end
