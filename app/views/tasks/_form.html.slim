@@ -15,4 +15,7 @@
   .form-group
     = f.label Task.human_attribute_name(:deadline)
     = f.datetime_local_field :deadline,class: 'form-control'
+  .form-group
+    = f.label Task.human_attribute_name(:status)
+    = f.select :status,["未着手","着手中","完了"], {include_blank: 'どれかを選択してください。'},class: 'form-control'
   = f.submit nil ,class: 'btn btn-primary'

@@ -21,6 +21,7 @@ describe "新規登録", type: :system, js: true do
         fill_in 'task_name', with: 'testtesttest'
         fill_in 'task_description', with: 'testtesttesttesttesttest'
         fill_in 'task_deadline', with: DateTime.current.strftime("%m%d%Y\t%I%M%P")
+        select '未着手', from: 'task_status'
         click_button "登録する"
       }.to change{Task.count}.by(1)
     end
