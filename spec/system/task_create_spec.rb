@@ -20,7 +20,7 @@ describe "新規登録", type: :system, js: true do
       expect{
         fill_in 'task_name', with: 'testtesttest'
         fill_in 'task_description', with: 'testtesttesttesttesttest'
-        click_button "Create Task"
+        click_button "登録する"
       }.to change{Task.count}.by(1)
     end
   end
@@ -29,7 +29,7 @@ describe "新規登録", type: :system, js: true do
       expect{
         fill_in 'task_name', with: ''
         fill_in 'task_description', with: ''
-        click_button "Create Task"
+        click_button "登録する"
       }.to change{Task.count}.by(0)
       expect(page).to have_css ".error"
     end
