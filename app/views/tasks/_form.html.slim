@@ -18,4 +18,7 @@
   .form-group
     = f.label Task.human_attribute_name(:status)
     = f.select :status,["未着手","着手中","完了"], {include_blank: 'どれかを選択してください。'},class: 'form-control'
+  .form-group
+    = f.label Task.human_attribute_name(:priority)
+    = f.select :priority,[['低', 1], ['中', 2], ['高', 3]], {include_blank: 'どれかを選択してください。'},class: 'form-control'
   = f.submit nil ,class: 'btn btn-primary'
