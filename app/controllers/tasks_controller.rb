@@ -26,9 +26,12 @@ class TasksController < ApplicationController
 
   def update
     @task = Task.find(params[:id])
-    @task.update!(task_params)
-    flash[:notice] = '更新しました。'
-    redirect_to root_path
+    if @task.update(task_params)
+      flash[:notice] = '更新しました。'
+      redirect_to root_path
+    else
+      render :edit
+    end
   end
   def destroy
     @task = Task.find(params[:id])
