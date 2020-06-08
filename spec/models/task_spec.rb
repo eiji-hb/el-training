@@ -19,6 +19,10 @@ RSpec.describe Task, type: :model do
         @task.description = nil
         expect(@task).not_to be_valid
       end
+      it 'deadlineが存在しないとき' do
+        @task.deadline = nil
+        expect(@task).not_to be_valid
+      end
     end
   end
 end

@@ -1,10 +1,12 @@
 class TasksController < ApplicationController
+  include TasksHelper
+
   def new
     @task = Task.new
   end
 
   def index
-    @tasks = Task.all.order(created_at: :desc)
+    @tasks = Task.all.order(sort_column + ' ' + sort_direction)
   end
 
   def show
@@ -42,6 +44,6 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:name,:description)
+    params.require(:task).permit(:name,:description,:deadline)
   end
 end
