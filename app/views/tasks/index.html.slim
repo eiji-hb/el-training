@@ -30,3 +30,5 @@ table.table.table-hover
         td= priority(task.priority)
         td= link_to "編集",edit_task_path(task),class: 'btn btn-primary',id: 'edit'
         td= link_to "消去",task_path(task), method: :delete, data: {confirm: "本当に削除しますか？"},class: 'btn btn-danger'
+div.footer.mt-2
+  = paginate @tasks
