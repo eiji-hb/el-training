@@ -5,6 +5,7 @@ FactoryBot.define do
     deadline {'2020-07-15 18:25:00'}
     status {"未着手"}
     priority { 3 }
+    association :user
   end
   factory :task1, class: Task do
     name { '1MyText' }
@@ -12,6 +13,7 @@ FactoryBot.define do
     deadline {'2021-07-15 18:25:00'}
     status {"完了"}
     priority { 2 }
+    association :user
   end
   factory :task2, class: Task do
     name { '2MyText' }
@@ -19,6 +21,7 @@ FactoryBot.define do
     deadline {'2022-07-15 18:25:00'}
     status {"着手中"}
     priority { 1 }
+    association :user
   end
   factory :task3, class: Task do
     name { '3MyText' }
@@ -26,5 +29,6 @@ FactoryBot.define do
     deadline {'2023-07-15 18:25:00'}
     status {"未着手"}
     priority { 1 }
+    association :user
   end
 end
