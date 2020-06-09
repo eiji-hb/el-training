@@ -10,12 +10,7 @@ describe "編集", type: :system, js: true do
       expect(current_path).to eq edit_task_path(@task)
     end
   end
-  context "indexに遷移" do
-    it '一覧ボタンを押す' do
-      click_link "一覧"
-      expect(current_path).to eq tasks_path
-    end
-  end
+
   context '有効な情報を送信' do
     it 'indexにリダイレクトされる' do
       fill_in 'task_name', with: 'testtesttest'

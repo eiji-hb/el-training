@@ -8,10 +8,11 @@ html
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
   body
+    = render 'layouts/header'
     .container
       .notice
       - if flash.notice.present?
-        .alert.alert-success.mt-5
+        .alert.alert-success
           = flash.notice
       .error
       - if flash.alert.present?

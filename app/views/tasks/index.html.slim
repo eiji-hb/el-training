@@ -1,10 +1,8 @@
-h1 タスク一覧
-.nav.justify-content-end
-  =link_to '一覧',tasks_path,class: 'nav-link'
-= render 'tasks/search'
-= link_to '新規登録',new_task_path,class: 'btn btn-primary'
+h1.float-left タスク一覧
+.float-right
+  = render 'tasks/search'
 .mb-3
-table.table.table-hover
+table.table.table-hover#index
   thead.thead-default
     tr
       th= Task.human_attribute_name(:name)
@@ -23,7 +21,7 @@ table.table.table-hover
   tbody
     - @tasks.each do |task|
       tr
-        td= link_to task.name,task_path(task)
+        td= link_to task.name,task_path(task),class: "name"
         td= task.created_at
         td= task.deadline.strftime("%Y年%m月%d日 %H:%M")
         td= task.status
