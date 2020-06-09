@@ -1,27 +1,32 @@
 require 'rails_helper'
 
-describe "show画面からの遷移", type: :system, js: true do
+describe "ユーザー詳細", type: :system, js: true do
   before do
-    @task = FactoryBot.create(:task)
+    @user = FactoryBot.create(:user)
     visit login_path
     fill_in 'user_email', with: 'hoge@hoge.com'
     fill_in 'user_password', with: 'password'
     click_button "ログインする"
-    visit task_path(@task)
+    visit user_path(@user)
+  end
+  context '現在のページ確認' do
+    it 'showページ' do
+      expect(current_path).to eq user_path(@user)
+    end
   end
   context "編集に遷移" do
     it "editページに遷移" do
       click_link "編集"
-      expect(current_path).to eq edit_task_path(@task)
+      expect(current_path).to eq edit_user_path(@user)
     end
   end
   context "遷移" do
-    it "タスクを消去" do
+    it "ユーザーを消去" do
       click_link "消去"
       expect(page.accept_confirm).to eq "本当に削除しますか？"
       expect{
         expect(page).to have_content "消去しました。"
-        }.to change{Task.count}.by(-1)
+        }.to change{User.count}.by(-1)
     end
   end
 end

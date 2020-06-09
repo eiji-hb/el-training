@@ -3,6 +3,10 @@ require 'rails_helper'
 describe "編集", type: :system, js: true do
   before do
     @task = FactoryBot.create(:task)
+    visit login_path
+    fill_in 'user_email', with: 'hoge@hoge.com'
+    fill_in 'user_password', with: 'password'
+    click_button "ログインする"
     visit edit_task_path(@task)
   end
   context '現在のページ確認' do

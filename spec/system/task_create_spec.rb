@@ -2,8 +2,11 @@ require 'rails_helper'
 
 describe "新規登録", type: :system, js: true do
   before do
-    # @user = FactoryBot.create(:user)
-    # sign_in @user
+    @user = FactoryBot.create(:user)
+    visit login_path
+    fill_in 'user_email', with: 'hoge@hoge.com'
+    fill_in 'user_password', with: 'password'
+    click_button "ログインする"
     visit new_task_path
   end
   context '現在のページ確認' do
@@ -15,7 +18,6 @@ describe "新規登録", type: :system, js: true do
   context '有効な情報を送信' do
     it 'indexにリダイレクトされる' do
       expect{
-        @user = FactoryBot.create(:user)
         fill_in 'task_name', with: 'testtesttest'
         fill_in 'task_description', with: 'testtesttesttesttesttest'
         fill_in 'task_deadline', with: DateTime.current.strftime("%m%d%Y\t%I%M%P")

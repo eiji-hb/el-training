@@ -6,18 +6,16 @@ describe "index画面からの遷移", type: :system, js: true do
     @task1 = FactoryBot.create(:task1,id:2)
     @task2 = FactoryBot.create(:task2,id:3)
     @task3 = FactoryBot.create(:task3,id:4)
+    visit login_path
+    fill_in 'user_email', with: 'hoge@hoge.com'
+    fill_in 'user_password', with: 'password'
+    click_button "ログインする"
     visit tasks_path
-  end
-  context "新規登録に遷移" do
-    it "newページに遷移" do
-      click_link "新規登録"
-      expect(current_path).to eq new_task_path
-    end
   end
   context "編集に遷移" do
     it "editページに遷移" do
       click_link "編集",match: :first
-      expect(current_path).to eq edit_task_path(@task3)
+      expect(current_path).to eq edit_task_path(@task)
     end
   end
   context "遷移" do
