@@ -9,12 +9,7 @@ describe "新規登録", type: :system, js: true do
       expect(current_path).to eq new_task_path
     end
   end
-  context "indexに遷移" do
-    it '一覧ボタンを押す' do
-      click_link "一覧"
-      expect(current_path).to eq tasks_path
-    end
-  end
+
   context '有効な情報を送信' do
     it 'indexにリダイレクトされる' do
       expect{
