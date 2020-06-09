@@ -8,11 +8,11 @@ class TasksController < ApplicationController
   def index
     case params[:select]
     when "タイトル"
-      @tasks = Task.where(name: params[:q]).order(sort_column + ' ' + sort_direction)
+      @tasks = Task.where(name: params[:q]).order(sort_column + ' ' + sort_direction).page(params[:page]).per(5)
     when "ステータス"
-      @tasks = Task.where(status: params[:q]).order(sort_column + ' ' + sort_direction)
+      @tasks = Task.where(status: params[:q]).order(sort_column + ' ' + sort_direction).page(params[:page]).per(5)
     else
-      @tasks = Task.all.order(sort_column + ' ' + sort_direction)
+      @tasks = Task.all.order(sort_column + ' ' + sort_direction).page(params[:page]).per(5)
     end
   end
 
