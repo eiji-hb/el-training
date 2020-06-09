@@ -1,0 +1,23 @@
+.error
+  - if @user.errors.present?
+    ul#error_explantion
+      - @user.errors.full_messages.each do |message|
+        li = message
+h1 ユーザー編集
+= form_with model: @user, local: true do |f|
+  .form-group
+    = f.label User.human_attribute_name(:name)
+    = f.text_field :name,class: 'form-control'
+  .form-group
+    = f.label User.human_attribute_name(:email)
+    = f.email_field :email,class: 'form-control'
+  .form-group
+    = f.label :password,"新しいパスワード"
+    = f.password_field :password,class: 'form-control'
+  .form-group
+    = f.label :password_confirmation,"新しいパスワード(確認)"
+    = f.password_field :password_confirmation,class: 'form-control'
+  / .form-group
+  /   = f.label :password,"現在のパスワード"
+  /   = f.password_field :password,class: 'form-control'
+  = f.submit nil ,class: 'btn btn-primary'

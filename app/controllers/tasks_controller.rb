@@ -8,20 +8,21 @@ class TasksController < ApplicationController
   def index
     case params[:select]
     when "タイトル"
-      @tasks = Task.where(name: params[:q]).order(sort_column + ' ' + sort_direction).page(params[:page]).per(5)
+      @tasks = current_user.tasks.where(name: params[:q]).order(sort_column + ' ' + sort_direction).page(params[:page]).per(5)
     when "ステータス"
-      @tasks = Task.where(status: params[:q]).order(sort_column + ' ' + sort_direction).page(params[:page]).per(5)
+      @tasks = current_user.tasks.where(status: params[:q]).order(sort_column + ' ' + sort_direction).page(params[:page]).per(5)
     else
-      @tasks = Task.all.order(sort_column + ' ' + sort_direction).page(params[:page]).per(5)
+      @tasks = current_user.tasks.all.order(sort_column + ' ' + sort_direction).page(params[:page]).per(5)
+      # @tasks = Task.all.order(sort_column + ' ' + sort_direction).page(params[:page]).per(5)
     end
   end
 
   def show
-    @task = Task.find(params[:id])
+    @task = current_user.tasks.find(params[:id])
   end
 
   def create
-    @task = Task.new(task_params)
+    @task = current_user.tasks.new(task_params)
     if @task.save
       redirect_to root_path, notice: '成功'
     else
@@ -30,11 +31,11 @@ class TasksController < ApplicationController
   end
 
   def edit
-    @task = Task.find(params[:id])
+    @task = current_user.tasks.find(params[:id])
   end
 
   def update
-    @task = Task.find(params[:id])
+    @task = current_user.tasks.find(params[:id])
     if @task.update(task_params)
       flash[:notice] = '更新しました。'
       redirect_to root_path
@@ -43,7 +44,7 @@ class TasksController < ApplicationController
     end
   end
   def destroy
-    @task = Task.find(params[:id])
+    @task = current_user.tasks.find(params[:id])
     flash[:notice] = '消去しました。'
     @task.destroy
     redirect_to root_path
