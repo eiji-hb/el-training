@@ -11,6 +11,9 @@ table.table.table-hover
       th= User.human_attribute_name(:email)
       td= @user.email
     tr
+      th= "管理権限"
+      td= @user.admin_i18n
+    tr
       th= User.human_attribute_name(:created_at)
       td= @user.created_at.strftime("%Y年%m月%d日 %H:%M")
     tr

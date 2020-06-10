@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe "index画面からの遷移", type: :system, js: true do
   before do
-    @task = FactoryBot.create(:task,id:1)
+    @task = FactoryBot.create(:task,id:1,)
     @task1 = FactoryBot.create(:task1,id:2)
     @task2 = FactoryBot.create(:task2,id:3)
     @task3 = FactoryBot.create(:task3,id:4)
@@ -49,6 +49,10 @@ describe "index画面からの遷移", type: :system, js: true do
     end
   end
   context "検索" do
+    before do
+      @taglist = FactoryBot.create(:taglist1)
+      @tag_table = FactoryBot.create(:tag_table1,taglist: @taglist,task: @task)
+    end
     it "タイトルと一致するのを検索" do
       select 'タイトル', from: 'select'
       fill_in 'q',with: 'MyText'
@@ -60,6 +64,12 @@ describe "index画面からの遷移", type: :system, js: true do
       fill_in 'q',with: '未着手'
       click_button "検索"
       expect(page).to have_selector 'td', text: '未着手'
+    end
+    it "ラベルと一致するのを検索" do
+      select 'ラベル', from: 'select'
+      fill_in 'q',with: 'aaa'
+      click_button "検索"
+      expect(page).to have_selector 'td', text: 'aaa'
     end
   end
 end

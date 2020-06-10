@@ -4,6 +4,7 @@
 * name  :string(255)
 * description  :text(65535)
 # rails (6.0.3.1)
+* rails db:migrate:redo
 ## heroku
 * heroku create
 * git push heroku master

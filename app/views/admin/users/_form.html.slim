@@ -2,7 +2,7 @@
   - if @user.errors.present?
     ul#error_explantion
       - @user.errors.full_messages.each do |message|
-        li = message
+        li.text-danger = message
 
 = form_with model: [:admin,@user], local: true do |f|
   .form-group
@@ -17,4 +17,6 @@
   .form-group
     = f.label User.human_attribute_name(:password_confirmation)
     = f.password_field :password_confirmation,class: 'form-control'
+  / .form-group
+  /   = f.hidden_field :admin , value: "admin"
   = f.submit nil ,class: 'btn btn-primary'

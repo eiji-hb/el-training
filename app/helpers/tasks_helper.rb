@@ -25,4 +25,15 @@ module TasksHelper
       "低"
     end
   end
+
+  def show_tag(task)
+    @tags = Taglist.new
+    tags = Taglist.where(id: task.taglists)
+    tag = tags.map do |t|
+      array = []
+      array << t.tag_name
+    end
+    taglist = tag.join(' ')
+    return taglist
+  end
 end

@@ -34,6 +34,20 @@ describe "headerからの遷移", type: :system, js: true do
       expect(page).to have_content 'ログアウトしました'
     end
   end
+  context "一般ユーザーでログインした場合" do
+    before do
+      @user2 = FactoryBot.create(:user2)
+      visit login_path
+      fill_in 'user_email', with: 'hoge2@hoge.com'
+      fill_in 'user_password', with: 'password12'
+      click_button "ログインする"
+    end
+    it "ユーザー一覧に遷移" do
+      click_link "ユーザー一覧"
+      visit current_path
+      expect(current_path).to eq root_path
+    end
+  end
   context "ログイン前の場合" do
     it "rootページに遷移" do
       click_link "タスク管理"

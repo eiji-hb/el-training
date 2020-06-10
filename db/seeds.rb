@@ -4,22 +4,23 @@ User.create!(
   email: "test@example.com",
   password: "password",
   password_confirmation: "password",
-  role: 1
+  admin: "admin"
 )
 User.create!(
   name: "テストユーザー1",
   email: "test1@example.com",
   password: "password",
   password_confirmation: "password",
-  role: 0
+  admin: "general"
 )
 User.create!(
   name: "テストユーザー2",
   email: "test2@example.com",
   password: "password",
   password_confirmation: "password",
-  role: 0
+  admin: "general"
 )
+
 #Task
 user = User.first
 3.times do |i|
@@ -40,12 +41,47 @@ end
     priority: 2,
   )
 end
+user2 = User.find(2)
 3.times do |i|
-  user.tasks.create!(
+  user2.tasks.create!(
     name: "③テストタイトル #{i+1}",
     description: "③テスト投稿 #{i+1}",
     deadline: '2023-07-15 18:25:00',
     status: "着手中",
     priority: 1,
   )
+end
+
+#Taglist
+Taglist.create!(
+  tag_name: "aaa"
+)
+Taglist.create!(
+  tag_name: "bbb"
+)
+Taglist.create!(
+  tag_name: "ccc"
+)
+
+#TagTable
+tag1 = Taglist.first
+tag2 = Taglist.find(2)
+tag3 = Taglist.find(3)
+
+tasks = Task.pluck(:id)
+tasks[0..3].each do |id|
+  task = Task.find(id)
+  @tag_table = TagTable.create(taglist_id: tag1.id, task_id: task.id)
+  @tag_table = TagTable.create(taglist_id: tag2.id, task_id: task.id)
+end
+tasks[4..6].each do |id|
+  task = Task.find(id)
+  @tag_table = TagTable.create(taglist_id: tag1.id, task_id: task.id)
+  @tag_table = TagTable.create(taglist_id: tag2.id, task_id: task.id)
+  @tag_table = TagTable.create(taglist_id: tag3.id, task_id: task.id)
+end
+tasks[7..9].each do |id|
+  task = Task.find(id)
+  @tag_table = TagTable.create(taglist_id: tag2.id, task_id: task.id)
+  @tag_table = TagTable.create(taglist_id: tag3.id, task_id: task.id)
 end

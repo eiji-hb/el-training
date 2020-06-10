@@ -2,7 +2,7 @@
   - if @task.errors.present?
     ul#error_explantion
       - @task.errors.full_messages.each do |message|
-        li = message
+        li.text-danger = message
 
 = form_with model: @task, local: true do |f|
   .form-group
@@ -11,6 +11,10 @@
   .form-group
     = f.label Task.human_attribute_name(:description)
     = f.text_area :description,row: 5,class: 'form-control'
+  = fields_for @taglist,id: 'tags_form' do |t|
+    .form-group
+      = t.label Taglist.human_attribute_name(:tag_name)
+      = t.text_field :tag_name,:placeholder => ",で区切って入力してください", class: 'form-control'
   .form-group
     = f.label Task.human_attribute_name(:deadline)
     = f.datetime_local_field :deadline,class: 'form-control'
