@@ -36,10 +36,10 @@ describe "headerからの遷移", type: :system, js: true do
   end
   context "一般ユーザーでログインした場合" do
     before do
-      @user1 = FactoryBot.create(:user1)
+      @user2 = FactoryBot.create(:user2)
       visit login_path
-      fill_in 'user_email', with: 'hoge1@hoge.com'
-      fill_in 'user_password', with: 'password1'
+      fill_in 'user_email', with: 'hoge2@hoge.com'
+      fill_in 'user_password', with: 'password12'
       click_button "ログインする"
     end
     it "ユーザー一覧に遷移" do

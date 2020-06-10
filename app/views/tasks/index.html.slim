@@ -6,6 +6,7 @@ table.table.table-hover#index
   thead.thead-default
     tr
       th= Task.human_attribute_name(:name)
+      th= Taglist.human_attribute_name(:tag_name)
       th= Task.human_attribute_name(:created_at)
       th
         = Task.human_attribute_name(:deadline)
@@ -22,7 +23,8 @@ table.table.table-hover#index
     - @tasks.each do |task|
       tr
         td= link_to task.name,task_path(task),class: "name"
-        td= task.created_at
+        td= show_tag(task)
+        td= task.created_at.strftime("%Y年%m月%d日 %H:%M")
         td= task.deadline.strftime("%Y年%m月%d日 %H:%M")
         td= task.status
         td= priority(task.priority)

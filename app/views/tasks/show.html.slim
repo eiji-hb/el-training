@@ -12,6 +12,9 @@ table.table.table-hover
       th= Task.human_attribute_name(:description)
       td= simple_format(h(@task.description),{},snitize: false,wrapper_tag:"div")
     tr
+      th= Taglist.human_attribute_name(:tag_name)
+      td= @tag
+    tr
       th= Task.human_attribute_name(:created_at)
       td= @task.created_at.strftime("%Y年%m月%d日 %H:%M")
     tr
