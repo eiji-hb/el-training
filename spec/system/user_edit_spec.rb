@@ -7,11 +7,11 @@ describe "ユーザー編集", type: :system, js: true do
     fill_in 'user_email', with: 'hoge@hoge.com'
     fill_in 'user_password', with: 'password'
     click_button "ログインする"
-    visit edit_user_path(@user)
+    visit edit_admin_user_path(@user)
   end
   context '現在のページ確認' do
     it 'newページ' do
-      expect(current_path).to eq edit_user_path(@user)
+      expect(current_path).to eq edit_admin_user_path(@user)
     end
   end
 

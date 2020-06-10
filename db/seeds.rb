@@ -4,6 +4,21 @@ User.create!(
   email: "test@example.com",
   password: "password",
   password_confirmation: "password",
+  role: 1
+)
+User.create!(
+  name: "テストユーザー1",
+  email: "test1@example.com",
+  password: "password",
+  password_confirmation: "password",
+  role: 0
+)
+User.create!(
+  name: "テストユーザー2",
+  email: "test2@example.com",
+  password: "password",
+  password_confirmation: "password",
+  role: 0
 )
 #Task
 user = User.first

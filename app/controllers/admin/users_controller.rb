@@ -1,4 +1,4 @@
-class UsersController < ApplicationController
+class Admin::UsersController < ApplicationController
   skip_before_action :login_required
   before_action :correct_user, only: [:edit,:update,:destroy]
   def new
@@ -11,6 +11,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @tasks = @user.tasks.all.page(params[:page]).per(5)
   end
 
   def create

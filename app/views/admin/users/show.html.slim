@@ -1,0 +1,50 @@
+h1 ユーザー詳細
+table.table.table-hover
+  tbody
+    tr
+      th= User.human_attribute_name(:id)
+      td= @user.id
+    tr
+      th= User.human_attribute_name(:name)
+      td= @user.name
+    tr
+      th= User.human_attribute_name(:email)
+      td= @user.email
+    tr
+      th= User.human_attribute_name(:created_at)
+      td= @user.created_at.strftime("%Y年%m月%d日 %H:%M")
+    tr
+      th= User.human_attribute_name(:updated_at)
+      td= @user.updated_at.strftime("%Y年%m月%d日 %H:%M")
+= link_to "編集",edit_admin_user_path(@user),class: 'btn btn-primary mr-3'
+= link_to "消去",admin_user_path(@user), method: :delete, data: {confirm: "本当に削除しますか？"},class: 'btn btn-danger'
+.mb-3
+table.table.table-hover#index
+  thead.thead-default
+    tr
+      th= Task.human_attribute_name(:name)
+      th= Task.human_attribute_name(:created_at)
+      th
+        = Task.human_attribute_name(:deadline)
+        = sort_asc("deadline")
+        = sort_desc("deadline")
+      th= Task.human_attribute_name(:status)
+      th
+        = Task.human_attribute_name(:priority)
+        = sort_asc("priority")
+        = sort_desc("priority")
+      th
+      th
+  tbody
+    - @tasks.each do |task|
+      tr
+        td= link_to task.name,task_path(task),class: "name"
+        td= task.created_at
+        td= task.deadline.strftime("%Y年%m月%d日 %H:%M")
+        td= task.status
+        td= priority(task.priority)
+        - if current_user.id == @user.id
+          td= link_to "編集",edit_task_path(task),class: 'btn btn-primary',id: 'edit'
+          td= link_to "消去",task_path(task), method: :delete, data: {confirm: "本当に削除しますか？"},class: 'btn btn-danger'
+div.footer.mt-2
+  = paginate @tasks

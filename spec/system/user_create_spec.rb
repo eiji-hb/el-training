@@ -2,11 +2,11 @@ require 'rails_helper'
 
 describe "ユーザー登録", type: :system, js: true do
   before do
-    visit new_user_path
+    visit new_admin_user_path
   end
   context '現在のページ確認' do
     it 'newページ' do
-      expect(current_path).to eq new_user_path
+      expect(current_path).to eq new_admin_user_path
     end
   end
 
