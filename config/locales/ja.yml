@@ -232,6 +232,6 @@ ja:
     pm: 午後
   enums:
     user:
-      role:
+      admin:
         general: '一般'
         admin: '管理者'

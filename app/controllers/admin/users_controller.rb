@@ -1,12 +1,14 @@
 class Admin::UsersController < ApplicationController
   skip_before_action :login_required
   before_action :correct_user, only: [:edit,:update,:destroy]
+  before_action :admin_user,only: [:index]
+  before_action :no_deletion,only: [:update]
   def new
     @user = User.new
   end
 
   def index
-    @users = User.all
+    @users = User.all.order(id: :asc)
   end
 
   def show
@@ -47,12 +49,22 @@ class Admin::UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name,:email,:password,:password_confirmation)
+    params.require(:user).permit(:name,:email,:password,:password_confirmation,:admin)
   end
   def correct_user
-    unless current_user.id == User.find(params[:id]).id
+    unless current_user.id == User.find(params[:id]).id || current_user.admin
       flash[:alert] = "権限がありません"
       redirect_to root_path
+    end
+  end
+  def admin_user
+    redirect_to root_path unless current_user.admin?
+  end
+  def no_deletion
+    user = User.where(admin: true)
+    if params[:user][:admin] == "general" && user.count == 1
+      flash[:alert] = "管理者がいなくなります。"
+      redirect_to admin_users_path
     end
   end
 end

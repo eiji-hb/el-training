@@ -17,4 +17,6 @@
   .form-group
     = f.label User.human_attribute_name(:password_confirmation)
     = f.password_field :password_confirmation,class: 'form-control'
+  / .form-group
+  /   = f.hidden_field :admin , value: "admin"
   = f.submit nil ,class: 'btn btn-primary'

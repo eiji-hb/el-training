@@ -7,14 +7,29 @@ table.table.table-hover#index-user
       th= User.human_attribute_name(:id)
       th= User.human_attribute_name(:name)
       th= User.human_attribute_name(:email)
+      th= "管理権限"
+      th= "権限変更"
       th
       th
   tbody
     - @users.each do |user|
       tr
         td= user.id
-        td= link_to user.name,admin_user_path(user),class: "name"
+        td= link_to user.name,admin_user_path(user),id: "username"
         td= user.email
-        - if current_user.id == user.id
-          td= link_to "編集",edit_admin_user_path(user),class: 'btn btn-primary',id: 'edit'
-          td= link_to "消去",admin_user_path(user), method: :delete, data: {confirm: "本当に削除しますか？"},class: 'btn btn-danger'
+        td= user.admin_i18n
+        td.p-0
+          - if user.admin?
+            = form_with model:[:admin,user], local: true do |f|
+              .form-group
+                = f.hidden_field :admin , value: "general"
+              = f.submit "一般に変更する" ,class: 'btn btn-primary'
+          - else
+            = form_with model:[:admin,user], local: true do |f|
+              .form-group
+                = f.hidden_field :admin , value: "admin"
+              = f.submit "管理者に変更する" ,class: 'btn btn-danger'
+        / td
+        /   = render 'admin/users/stats',locals: {user: user}
+        td= link_to "編集",edit_admin_user_path(user),class: 'btn btn-primary',id: 'edit'
+        td= link_to "消去",admin_user_path(user), method: :delete, data: {confirm: "本当に削除しますか？"},class: 'btn btn-danger'

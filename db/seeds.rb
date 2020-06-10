@@ -4,21 +4,19 @@ User.create!(
   email: "test@example.com",
   password: "password",
   password_confirmation: "password",
-  role: 1
+  admin: "true"
 )
 User.create!(
   name: "テストユーザー1",
   email: "test1@example.com",
   password: "password",
   password_confirmation: "password",
-  role: 0
 )
 User.create!(
   name: "テストユーザー2",
   email: "test2@example.com",
   password: "password",
   password_confirmation: "password",
-  role: 0
 )
 #Task
 user = User.first
@@ -40,8 +38,9 @@ end
     priority: 2,
   )
 end
+user2 = User.find(2)
 3.times do |i|
-  user.tasks.create!(
+  user2.tasks.create!(
     name: "③テストタイトル #{i+1}",
     description: "③テスト投稿 #{i+1}",
     deadline: '2023-07-15 18:25:00',
