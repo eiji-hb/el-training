@@ -22,11 +22,11 @@ describe "headerからの遷移", type: :system, js: true do
     end
     it "ユーザー一覧に遷移" do
       click_link "ユーザー一覧"
-      expect(current_path).to eq users_path
+      expect(current_path).to eq admin_users_path
     end
     it "ユーザーを押す" do
       find('#user-link').click
-      expect(current_path).to eq user_path(@user)
+      expect(current_path).to eq admin_user_path(@user)
     end
     it "ログアウトに遷移" do
       click_link "ログアウト"
@@ -41,7 +41,7 @@ describe "headerからの遷移", type: :system, js: true do
     end
     it "ユーザー登録画面遷移" do
       click_link "ユーザー登録"
-      expect(current_path).to eq new_user_path
+      expect(current_path).to eq new_admin_user_path
     end
     it "ログイン画面に遷移" do
       click_link "ログイン"

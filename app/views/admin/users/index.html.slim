@@ -13,8 +13,8 @@ table.table.table-hover#index-user
     - @users.each do |user|
       tr
         td= user.id
-        td= link_to user.name,user_path(user),class: "name"
+        td= link_to user.name,admin_user_path(user),class: "name"
         td= user.email
         - if current_user.id == user.id
-          td= link_to "編集",edit_user_path(user),class: 'btn btn-primary',id: 'edit'
-          td= link_to "消去",user_path(user), method: :delete, data: {confirm: "本当に削除しますか？"},class: 'btn btn-danger'
+          td= link_to "編集",edit_admin_user_path(user),class: 'btn btn-primary',id: 'edit'
+          td= link_to "消去",admin_user_path(user), method: :delete, data: {confirm: "本当に削除しますか？"},class: 'btn btn-danger'
