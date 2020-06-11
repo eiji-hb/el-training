@@ -13,6 +13,3 @@ jobs:
       - run:
           name: bundle install
           command: bundle
-      - run:
-        name: rspecを実行
-        command: rspec
