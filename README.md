@@ -14,5 +14,4 @@
 * heroku restart
 * heroku logs -t
 * heroku pg:reset DATABASE
-* heroku run rails db:reset
 * heroku run rake db:seed
