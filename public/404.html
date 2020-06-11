@@ -5,63 +5,119 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <style>
   .rails-default-error-page {
-    background-color: #EFEFEF;
-    color: #2E2F30;
+    background: linear-gradient(90deg, rgb(22, 135, 237), rgb(20, 55, 90));
+    color: red;
     text-align: center;
-    font-family: arial, sans-serif;
+    font-family: 'Times New Roman', Times, serif;
     margin: 0;
   }
-
-  .rails-default-error-page div.dialog {
+  .rails-default-error-page div.box23 {
     width: 95%;
     max-width: 33em;
     margin: 4em auto 0;
   }
-
-  .rails-default-error-page div.dialog > div {
-    border: 1px solid #CCC;
-    border-right-color: #999;
-    border-left-color: #999;
-    border-bottom-color: #BBB;
-    border-top: #B00100 solid 4px;
-    border-top-left-radius: 9px;
-    border-top-right-radius: 9px;
-    background-color: white;
-    padding: 7px 12% 0;
-    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
+  .box23 {
+    position: relative;
+    margin: 2em 0 2em 40px;
+    padding: 8px 15px;
+    background: #fff0c6;
+    border-radius: 30px;
+  }
+  .box23:before{font-family: FontAwesome;
+      content: "\f111";
+      position: absolute;
+      font-size: 15px;
+      left: -40px;
+      bottom: 0;
+      color: #fff0c6;
+  }
+  .box23:after{
+      font-family: FontAwesome;
+      content: "\f111";
+      position: absolute;
+      font-size: 23px;
+      left: -23px;
+      bottom: 0;
+      color: #fff0c6;
+  }
+  .box23 p {
+      margin: 0;
+      padding: 0;
+  }
+  .ribbon10 {
+  display: inline-block;
+  position: relative;
+  height: 45px;
+  text-align: center;
+  box-sizing: border-box;
+  margin-top: 20px;
   }
 
-  .rails-default-error-page h1 {
-    font-size: 100%;
-    color: #730E15;
-    line-height: 1.5em;
+.ribbon10:before {
+  content: '';
+  position: absolute;
+  width: 10px;
+  bottom: -10px;
+  left: -35px;
+  z-index: -2;
+  border: 20px solid #a5cff3;
+  border-left-color: transparent;
   }
 
-  .rails-default-error-page div.dialog > p {
-    margin: 0 0 1em;
-    padding: 1em;
-    background-color: #F7F7F7;
-    border: 1px solid #CCC;
-    border-right-color: #999;
-    border-left-color: #999;
-    border-bottom-color: #999;
-    border-bottom-left-radius: 4px;
-    border-bottom-right-radius: 4px;
-    border-top-color: #DADADA;
-    color: #666;
-    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
-  }
+.ribbon10:after {
+  content: '';
+  position: absolute;
+  width: 10px;
+  bottom: -10px;
+  right: -35px;
+  z-index: -2;
+  border: 20px solid #a5cff3;
+  border-right-color: transparent;
+}
+
+.ribbon10 h1 {
+  display: inline-block;
+  position: relative;
+  margin: 0;
+  padding: 0 20px;
+  line-height: 45px;
+  font-size: 18px;
+  color: #008eff;
+  text-shadow: 0 0 2px #FFF;
+  background: -webkit-repeating-linear-gradient(-45deg, #b0daff, #b0daff 3px,#cfe8ff 3px, #cfe8ff 7px);
+  background: repeating-linear-gradient(-45deg, #b0daff, #b0daff 3px,#cfe8ff 3px, #cfe8ff 7px);
+}
+
+.ribbon10 h1:before {
+  position: absolute;
+  content: '';
+  top: 100%;
+  left: 0;
+  border: none;
+  border-bottom: solid 10px transparent;
+  border-right: solid 15px #7fafd9;
+}
+
+.ribbon10 h1:after {
+  position: absolute;
+  content: '';
+  top: 100%;
+  right: 0;
+  border: none;
+  border-bottom: solid 10px transparent;
+  border-left: solid 15px #7fafd9;
+}
   </style>
 </head>
 
 <body class="rails-default-error-page">
   <!-- This file lives in public/404.html -->
-  <div class="dialog">
-    <div>
-      <h1>The page you were looking for doesn't exist.</h1>
-      <p>You may have mistyped the address or the page may have moved.</p>
-    </div>
-    <p>If you are the application owner check the logs for more information.</p>
+  <div class="ribbon10">
+    <h1>404</h1>
+  </div>
+  <div class="box23">
+    <p>この先のリンクと私のキャリアの先がありません。</p>
+    <p>もしよろしかったら雇っていただけないでしょうか</p>
   </div>
 </body>
 </html>
