@@ -1,9 +1,11 @@
-version: 2.1
-
-orbs:
-    hello: circleci/hello-build@0.0.7 # circleci/buildpack-deps Docker イメージを使います
-
-workflows:
-    "Hello Workflow":
-        jobs:
-          - hello/hello-build
+version: 2.0
+jobs:
+ build:
+   docker:
+     - image: alpine:3.7
+   steps:
+     - run:
+         name: 最初の一歩
+         command: |
+           echo 'Hello World!'
+           echo 'This is the delivery pipeline'
