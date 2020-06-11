@@ -4,9 +4,9 @@ jobs:
   build:
     docker:
       - image: circleci/ruby:2.6.3-node
-      environment:
-        RAILS_ENV: test
-        - image: circleci/postgres:11.5-alpine
+        environment:
+          RAILS_ENV: test
+      - image: circleci/postgres:11.5-alpine
     working_directory: ~/el-training
     steps:
       - checkout
