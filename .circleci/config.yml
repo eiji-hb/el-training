@@ -1,15 +1,9 @@
+version: 2.1
 
-version: 2
-jobs:
-  build:
-    working_directory: ~/repo
-    docker:
-      - image: circleci/ruby:2.5.7-node
-        environment:
-          RAILS_ENV: test
-      - image: circleci/postgres:11.5-alpine
-    steps:
-      - checkout
-      - run:
-          name: bundle install
-          command: bundle
+orbs:
+    hello: circleci/hello-build@0.0.7 # circleci/buildpack-deps Docker イメージを使います
+
+workflows:
+    "Hello Workflow":
+        jobs:
+          - hello/hello-build
