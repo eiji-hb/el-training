@@ -11,5 +11,5 @@ jobs:
     steps:
       - checkout
       - run:
-          name: bundle install
-          command: bundle
+          name: rspec
+          command: rspec
