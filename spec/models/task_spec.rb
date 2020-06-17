@@ -2,7 +2,8 @@ require 'rails_helper'
 
 RSpec.describe Task, type: :model do
   before do
-    @task = FactoryBot.create(:task)
+    @user = FactoryBot.create(:user)
+    @task = FactoryBot.create(:task,user: @user)
   end
   describe '投稿が有効なとき' do
     it '有効な投稿検証' do

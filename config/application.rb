@@ -18,6 +18,9 @@ module ElTraining
 
     # i18n
     config.i18n.default_locale = :ja
+
+    # config.paths.add 'lib', eager_load: true
+    # config.autoload_paths += %W(#{config.root}/lib)
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading

@@ -4,5 +4,6 @@ class User < ApplicationRecord
   has_secure_password
 
   has_many :tasks, dependent: :destroy
+  has_many :notifications, dependent: :destroy
   enum admin: { general: false, admin: true }
 end
