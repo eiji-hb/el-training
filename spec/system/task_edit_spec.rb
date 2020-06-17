@@ -2,7 +2,8 @@ require 'rails_helper'
 
 describe "編集", type: :system, js: true do
   before do
-    @task = FactoryBot.create(:task)
+    @user = FactoryBot.create(:user)
+    @task = FactoryBot.create(:task,user: @user)
     visit login_path
     fill_in 'user_email', with: 'hoge@hoge.com'
     fill_in 'user_password', with: 'password'

@@ -2,10 +2,11 @@ FactoryBot.define do
   factory :task, class: Task do
     name { 'MyText' }
     description { 'MyTextMyTextMyTextMyTextMyText' }
-    deadline {'2020-07-15 18:25:00'}
+    deadline {'2000-07-15 18:25:00'}
     status {"未着手"}
     priority { 3 }
-    association :user
+    user { nil }
+    # association :user
   end
   factory :task1, class: Task do
     name { '1MyText' }

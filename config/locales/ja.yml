@@ -238,3 +238,7 @@ ja:
       admin:
         general: '一般'
         admin: '管理者'
+    notification:
+        action:
+            warning: '期限一日前です。'
+            expired: '期限を過ぎました。'

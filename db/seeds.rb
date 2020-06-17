@@ -27,7 +27,7 @@ user = User.first
   user.tasks.create!(
     name: "①テストタイトル #{i+1}",
     description: "①テスト投稿 #{i+1}",
-    deadline: '2020-07-15 18:25:00',
+    deadline: '2000-07-15 18:25:00',
     status: "未着手",
     priority: 3,
   )
@@ -36,7 +36,7 @@ end
   user.tasks.create!(
     name: "②テストタイトル #{i+1}",
     description: "②テスト投稿 #{i+1}",
-    deadline: '2021-07-15 18:25:00',
+    deadline: '2020-06-18 18:25:00',
     status: "完了",
     priority: 2,
   )

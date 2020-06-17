@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  include NotificationsHelper
   before_action :basic_auth, if: :production?
   before_action :login_required
   helper_method :current_user

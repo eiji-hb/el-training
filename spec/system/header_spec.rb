@@ -20,6 +20,10 @@ describe "headerからの遷移", type: :system, js: true do
       click_link "タスク作成"
       expect(current_path).to eq new_task_path
     end
+    it "通知に遷移" do
+      click_link "通知"
+      expect(current_path).to eq notifications_path
+    end
     it "ユーザー一覧に遷移" do
       click_link "ユーザー一覧"
       expect(current_path).to eq admin_users_path
@@ -62,5 +66,4 @@ describe "headerからの遷移", type: :system, js: true do
       expect(current_path).to eq login_path
     end
   end
-
 end

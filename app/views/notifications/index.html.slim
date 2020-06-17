@@ -1,0 +1,14 @@
+.mb-3
+table.table.table-hover
+  thead.thead-default
+    tr
+      th= "タスク"
+      th= "通知内容"
+      th= Task.human_attribute_name(:deadline)
+  tbody
+    - @notifications.each do |notification|
+      tr
+        td= notification.task.name
+        td= notification.action_i18n
+        td= notification.task.deadline.strftime("%Y年%m月%d日 %H:%M")
+div.footer.mt-2

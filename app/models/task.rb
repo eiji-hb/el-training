@@ -6,7 +6,7 @@ class Task < ApplicationRecord
   validates :priority, presence: true
 
   belongs_to :user
-
+  has_one :notification, dependent: :destroy
   has_many :tag_tables, dependent: :destroy
   has_many :taglists, through: :tag_tables
 

@@ -2,7 +2,8 @@ require 'rails_helper'
 
 describe "index画面からの遷移", type: :system, js: true do
   before do
-    @task = FactoryBot.create(:task,id:1,)
+    @user = FactoryBot.create(:user)
+    @task = FactoryBot.create(:task,id:1,user: @user)
     @task1 = FactoryBot.create(:task1,id:2)
     @task2 = FactoryBot.create(:task2,id:3)
     @task3 = FactoryBot.create(:task3,id:4)
