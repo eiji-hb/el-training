@@ -2,7 +2,7 @@
 * [el-training編](https://desolate-escarpment-76432.herokuapp.com/)
 # rails (6.0.3.1)
 * rails db:migrate:redo
-## heroku
+# heroku
 * heroku create
 * git push heroku master
 * heroku run rails db:migrate
@@ -12,3 +12,6 @@
 * heroku logs -t
 * heroku pg:reset DATABASE
 * heroku run rake db:seed
+* heroku run rake task:notification
+***
+* circleci local execute
