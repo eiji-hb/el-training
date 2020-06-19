@@ -23,37 +23,37 @@ jobs:
     steps:
       - checkout
 # bundle
-#       # Restore bundle cache
-#       - restore_cache:
-#           keys:
-#             - rails-demo-bundle-v2-{{ checksum "Gemfile.lock" }}
-#             - rails-demo-bundle-v2-
-#       - run:
-#           name: bundle update
-#           command: gem install bundler:2.1.4
-#       - run:
-#           name: Which bundler?
-#           command: bundle -v
-#       - run:
-#           name: bundle install
-#           command: bundle check || bundle install
-#       # Store bundle cache
-#       - save_cache:
-#           key: rails-demo-bundle-v2-{{ checksum "Gemfile.lock" }}
-#           paths:
-#             - vendor/bundle
-# # yarn
-#       - restore_cache:
-#           keys:
-#             - rails-demo-yarn-{{ checksum "yarn.lock" }}
-#             - rails-demo-yarn-
-#       - run:
-#           name: yarn
-#           command: yarn install --cache-folder ~/.cache/yarn
-#       - save_cache:
-#           key: rails-demo-yarn-{{ checksum "yarn.lock" }}
-#           paths:
-#             - ~/.cache/yarn
+      # Restore bundle cache
+      - restore_cache:
+          keys:
+            - rails-demo-bundle-v2-{{ checksum "Gemfile.lock" }}
+            - rails-demo-bundle-v2-
+      - run:
+          name: bundle update
+          command: gem install bundler:2.1.4
+      - run:
+          name: Which bundler?
+          command: bundle -v
+      - run:
+          name: bundle install
+          command: bundle check || bundle install
+      # Store bundle cache
+      - save_cache:
+          key: rails-demo-bundle-v2-{{ checksum "Gemfile.lock" }}
+          paths:
+            - vendor/bundle
+# yarn
+      - restore_cache:
+          keys:
+            - rails-demo-yarn-{{ checksum "yarn.lock" }}
+            - rails-demo-yarn-
+      - run:
+          name: yarn
+          command: yarn install --cache-folder ~/.cache/yarn
+      - save_cache:
+          key: rails-demo-yarn-{{ checksum "yarn.lock" }}
+          paths:
+            - ~/.cache/yarn
 # db
       - run:
           name: setup database
@@ -63,9 +63,8 @@ jobs:
           name: DB を待機
       #     command: dockerize -wait tcp://localhost:5432 -timeout 1m
           command: dockerize -wait tcp://127.0.0.1:5432 -timeout 3m
-      # - run: postgresql_config --socket
-      # - run: bundle exec rake db:create
-      # - run: bundle exec rake db:schema:load
+      - run: bundle exec rake db:create
+      - run: bundle exec rake db:schema:load
 
       # # Build JavaScript files
       # - run: bundle exec bin/webpack
