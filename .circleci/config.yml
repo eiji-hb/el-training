@@ -59,20 +59,23 @@ jobs:
           name: setup database
           command: |
             cp -v config/database.ci.yml config/database.yml
-      - run:
-          name: DB を待機
-          command: dockerize -wait tcp://127.0.0.1:5432 -timeout 3m
+      # - run:
+      #     name: DB を待機
+      #     command: dockerize -wait tcp://127.0.0.1:5432 -timeout 3m
       - run: bundle exec rake db:create
       - run: bundle exec rake db:schema:load
 
-      # Build JavaScript files
-      - run: bundle exec bin/webpack
 # rspec
       - run:
           name: run rspec
           command: |
               bundle exec rspec --profile 10 \
-                                --format RspecJunitFormatter \
                                 --out test_results/rspec.xml \
                                 --format progress \
                                 $(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)
+      # collect reports
+      - store_test_results:
+          path: /tmp/test-results
+      - store_artifacts:
+          path: /tmp/test-results
+          destination: test-results
