@@ -61,10 +61,9 @@ jobs:
             cp -v config/database.ci.yml config/database.yml
       - run:
           name: DB を待機
-      #     command: dockerize -wait tcp://localhost:5432 -timeout 1m
           command: dockerize -wait tcp://127.0.0.1:5432 -timeout 3m
       - run: bundle exec rake db:create
       - run: bundle exec rake db:schema:load
 
-      # # Build JavaScript files
-      # - run: bundle exec bin/webpack
+      # Build JavaScript files
+      - run: bundle exec bin/webpack
